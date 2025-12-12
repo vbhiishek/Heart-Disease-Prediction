@@ -17,7 +17,7 @@ def load_data(path="dataset.csv"):
     df = pd.read_csv(path)
     return df
 
-df = load_data("/mnt/data/dataset.csv")
+df = load_data("dataset.csv")
 
 st.sidebar.title("Navigation")
 page = st.sidebar.radio("Go to", ["Home", "Data", "Exploratory Analysis", "Modeling", "Predict"])
