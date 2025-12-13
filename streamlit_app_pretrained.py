@@ -76,7 +76,11 @@ st.markdown("---")
 #                    Prediction
 # ------------------------------------------------
 
+# Load feature names used during model training
+feature_names = pickle.load(open("feature_names.pkl", "rb"))
+
 if st.button("Predict"):
+    input_df = input_df[feature_names]
     prediction = selected_model.predict(input_df)[0]
 
     st.subheader("Prediction Result")
