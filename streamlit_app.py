@@ -172,4 +172,3 @@ if page == "Predict":
 
 # Footer
 st.markdown('---')
-st.caption("Built from your uploaded notebook & dataset. Modify /mnt/data/streamlit_app.py to customize.")
