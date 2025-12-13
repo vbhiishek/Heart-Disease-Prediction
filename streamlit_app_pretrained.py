@@ -51,7 +51,7 @@ selected_model_name = st.sidebar.selectbox("Choose Model", list(models.keys()))
 selected_model = models[selected_model_name]
 
 st.sidebar.write("### Model Accuracy")
-st.sidebar.success(f"{selected_model_name}: {model_metrics[selected_model_name]:.4f}")
+st.sidebar.success(f"{selected_model_name}: {model_metrics[selected_model_name]:.2f}")
 
 # ------------------------------------------------
 #            User Input Section
