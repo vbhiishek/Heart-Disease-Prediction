@@ -93,7 +93,7 @@ if st.button("Predict"):
     prediction = selected_model.predict(input_df)[0]
 
     st.subheader("Prediction Result")
-    if prediction >= 0.3 and prediction < 0.5:
+    if 0.3 <= prediction < 0.5:
         st.error("Slight Risk of Heart Disease")
     elif prediction >= 0.5 :
         st.error("⚠ High Risk of Heart Disease")
