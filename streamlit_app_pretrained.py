@@ -46,7 +46,7 @@ No training required.
 #                Sidebar (Model Choice)
 # ------------------------------------------------
 
-st.sidebar.header("🔍 Select a Model")
+st.sidebar.header("Select a Model")
 selected_model_name = st.sidebar.selectbox("Choose Model", list(models.keys()))
 selected_model = models[selected_model_name]
 
