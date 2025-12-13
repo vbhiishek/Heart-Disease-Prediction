@@ -14,7 +14,7 @@ def load_model(path):
 # Load all models from pkl files
 models = {
     "Logistic Regression": load_model("logistic_model.pkl"),
-    "Decision Tree": load_model("decision_tree.pkl"),
+    "Decision Trees": load_model("decision_tree.pkl"),
     "Random Forest": load_model("random_forest.pkl")
 }
 
