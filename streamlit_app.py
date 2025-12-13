@@ -76,15 +76,17 @@ if page == "Modeling":
     target = st.selectbox("Target column", options=['TenYearCHD'], index=0)
     features = st.multiselect("Features to use (leave empty to use all numeric features)", options=[c for c in df.columns if c!=target], default=[c for c in df.select_dtypes(include=[np.number]).columns if c!=target])
     test_size = st.slider("Test set fraction", 0.1, 0.5, 0.2)
-    model_choice = st.selectbox("Choose model", ["RandomForest", "LogisticRegression"])
+    model_choice = st.selectbox("Choose model", ["LogisticRegression", "DecisionTree", "RandomForest"])
     if st.button("Train model"):
         X = df[features].select_dtypes(include=[np.number]).fillna(0)
         y = df[target]
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size, random_state=42)
-        if model_choice == "RandomForest":
-            model = RandomForestClassifier(n_estimators=100, random_state=42)
+        if model_choice == "LogisticRegression":
+             model = LogisticRegression(max_iter=1000)
+        elif model_choice == "DecisionTree":
+             model = DecisionTreeClassifier(max_depth=3)
         else:
-            model = LogisticRegression(max_iter=1000)
+             model = RandomForestClassifier(n_estimators=100, random_state=42)
         model.fit(X_train, y_train)
         y_pred = model.predict(X_test)
         y_prob = model.predict_proba(X_test)[:,1] if hasattr(model, "predict_proba") else model.decision_function(X_test)
