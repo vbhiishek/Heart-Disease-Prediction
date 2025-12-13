@@ -26,20 +26,24 @@ This project covers:
 
 The dataset typically contains:
 
-- Age  
-- Sex  
-- Chest Pain Type  
-- Resting Blood Pressure  
-- Cholesterol  
-- Fasting Blood Sugar  
-- Resting ECG  
-- Maximum Heart Rate  
-- Exercise-Induced Angina  
-- ST Depression  
-- ST Slope  
-- Target (1 = Disease, 0 = No Disease)
+- male															
+- age  
+- education  
+- currentSmoker  
+- cigsPerDay  
+- BPMeds  
+- prevalentStroke  
+- prevalentHyp  
+- diabetes  
+- totChol 
+- sysBP
+- diaBP
+- BMI
+- heartRate
+- glucose
+- TenYearCHD (1 = Disease, 0 = No Disease)
 
-Dataset Source: UCI Heart Disease Dataset (or your own dataset)
+Dataset Source: UCI Heart Disease Dataset
 
 ---
 
