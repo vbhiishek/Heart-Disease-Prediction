@@ -58,20 +58,29 @@ st.sidebar.success(f"{selected_model_name}: {model_metrics[selected_model_name]:
 # ------------------------------------------------
 
 st.header("Enter Patient Information for Prediction")
-
+# Features that should allow floating inputs
+float_features = ["sysBP", "diaBP", "BMI"]
 input_data = {}
 cols = st.columns(3)
-
 for i, feature in enumerate(features):
     with cols[i % 3]:
-        default_value = float(df[feature].mean())  # use mean values as default
-        input_data[feature] = st.number_input(feature, value=default_value)
+        # Default value based on mean
+        default_value = float(df[feature].mean()) if feature in df.columns else 0.0
+
+        # FLOAT inputs for selected features
+        if feature in float_features:
+            val = st.number_input(feature, value=default_value, format="%.2f")
+
+        # INTEGER inputs for all other features
+        else:
+            val = st.number_input(feature, value=int(default_value), step=1)
+
+        input_data[feature] = val
 
 # Convert inputs to DataFrame
 input_df = pd.DataFrame([input_data])
 
 st.markdown("---")
-
 # ------------------------------------------------
 #                    Prediction
 # ------------------------------------------------
@@ -84,7 +93,7 @@ if st.button("Predict"):
     prediction = selected_model.predict(input_df)[0]
 
     st.subheader("Prediction Result")
-    if prediction == 1:
+    if prediction > 0.5:
         st.error("⚠ High Risk of Heart Disease")
     else:
         st.success("Low Risk of Heart Disease")
