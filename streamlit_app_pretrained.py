@@ -14,8 +14,8 @@ def load_model(path):
 # Load all models from pkl files
 models = {
     "Logistic Regression": load_model("logistic_model.pkl"),
-    "Random Forest": load_model("rf_model.pkl"),
-    "SVM": load_model("svm_model.pkl")
+    "Decision Tree": load_model("decision_tree.pkl"),
+    "Random Forest": load_model("random_forest.pkl")
 }
 
 # Load accuracy scores
@@ -39,7 +39,7 @@ This version of the app uses **3 pre-trained machine learning models**, allowing
 - Input patient data  
 - Get instant predictions  
 
-No training required — ideal for portfolio demonstration.
+No training required.
 """)
 
 # ------------------------------------------------
