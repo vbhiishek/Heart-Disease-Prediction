@@ -43,8 +43,19 @@ if page == "Home":
     st.pyplot(fig)
 
 if page == "Data":
-    st.header("Dataset & Cleaning")
+    st.header("Dataset Overview")
+    st.subheader("Original Columns")
     st.write("Columns:", list(df.columns))
+    
+    st.subheader("Removing Unnecessary Columns")
+    unnecessary_cols = ["education"]
+    st.write("Columns removed:", unnecessary_cols)
+
+    df = df.drop(columns=unnecessary_cols, errors="ignore")
+
+    st.markdown("### Cleaned Dataset Preview")
+    st.dataframe(df.head())
+    
     st.write("Null counts:")
     st.write(df.isnull().sum())
     st.markdown("### Summary statistics")
@@ -135,9 +146,18 @@ if page == "Predict":
     st.subheader("Enter patient data")
     cols = st.columns(3)
     for i, f in enumerate(features):
-        with cols[i%3]:
-            val = st.number_input(f"{f}", value=float(df[f].median()) if f in df.columns else 0.0)
-            user_input[f] = val
+    with cols[i % 3]:
+        default_val = float(df[f].median()) if f in df.columns else 0.0
+        
+        # Set dtype rules
+        if f in float_features:
+            # Allow floating values
+            val = st.number_input(f"{f}", value=default_val, format="%.2f")
+        else:
+            # Force integer values
+            val = st.number_input(f"{f}", value=int(default_val), step=1)
+        
+        user_input[f] = val
     input_df = pd.DataFrame([user_input])
     st.write("Input:")
     st.table(input_df.T.rename(columns={0:"value"}))
