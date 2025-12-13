@@ -141,7 +141,7 @@ if page == "Predict":
 
     model = st.session_state['model']
     features = st.session_state['features']
-
+    float_features = ["sysBP", "diaBP", "BMI"]
     user_input = {}
     st.subheader("Enter patient data")
     cols = st.columns(3)
