@@ -1,6 +1,4 @@
-# Heart-Disease-Prediction
-
-# ❤️ Heart Disease Prediction using Machine Learning
+# Heart Disease Prediction using Machine Learning
 
 This project builds and compares three machine learning models — **Logistic Regression**, **Decision Tree**, and **Random Forest** — to predict heart disease based on clinical features.
 
