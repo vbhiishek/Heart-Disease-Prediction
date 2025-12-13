@@ -146,8 +146,8 @@ if page == "Predict":
     st.subheader("Enter patient data")
     cols = st.columns(3)
     for i, f in enumerate(features):
-    with cols[i % 3]:
-        default_val = float(df[f].median()) if f in df.columns else 0.0
+        with cols[i % 3]:
+            default_val = float(df[f].median()) if f in df.columns else 0.0
         
         # Set dtype rules
         if f in float_features:
